@@ -1,5 +1,5 @@
 {
-  "name": "rufflebot",
+  "name": "rafflebot",
   "version": "1.0.0",
   "description": "Bot para sortear tareas",
   "main": "index.js",
@@ -13,7 +13,10 @@
   "author": "Nico Moret",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nicomoret7/RuffleBot/issues"
+    "url": "https://github.com/nicomoret7/RaffleBot/issues"
   },
-  "homepage": "https://github.com/nicomoret7/RuffleBot#readme"
+  "homepage": "https://github.com/nicomoret7/RaffleBot#readme",
+  "dependencies": {
+    "discord.js": "^13.0.1"
+  }
 }
