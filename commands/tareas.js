@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'tareas',
-	description:"Introduce y lista las tareas",
+	description:"Introduce y lista las tareas.",
 	execute(message, args, Discord, tareas) {
 		if (args.length != 0)	{
 			tareas.clear();

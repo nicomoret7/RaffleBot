@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'rhelp',
-	description:"Muestra una lista con los comandos disponibles",
+	description:"Muestra una lista con los comandos disponibles.",
 	execute(message, args, Discord, commands) {
 		// Embebbed response
 			const messageEmbed = new Discord.MessageEmbed()

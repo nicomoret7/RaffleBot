@@ -3,30 +3,31 @@ module.exports = {
 	description:"Reparte las tareas entre los participantes aleatoriamente.",
 	execute(message, args, Discord, users, tareas) {
 
-		// Función de sorteo
-		function raffle(users, tareas) {
+		// Función de sorteo mejorada
+		function raffle2(users, tareas) {
 			const res = new Map();
-			var i = 0;
+			var parts = new Set(users);
+			var tarecop = new Set(tareas);
 			var key;
 			var value;
 
-			while (tareas.size > 0) {
-				key = Array.from(users.values())[i];
+			while (tarecop.size > 0) {
+				if (parts.size == 0) parts = new Set(users);
+				key = Array.from(parts.values())[Math.floor(Math.random()*parts.size)];
 				console.log(`Key: ${key}`);
-				value = Array.from(tareas.values())[Math.floor(Math.random()*tareas.size)];
+				value = Array.from(tarecop.values())[Math.floor(Math.random()*tarecop.size)];
 				console.log(`Value: ${value}`);
 
 				if (res.has(key)) res.set(key, [value].concat(res.get(key)));
 				else res.set(key, [value]);
-				tareas.delete(value);
-				console.log(`Tamaño de tareas: ${tareas.size}`);
-				i = (i+1)%users.size;
+				tarecop.delete(value);
+				parts.delete(key);
 			}
 
 			return res;
 		}
 
-		
+
 		// Comprueba que los participantes y las tareas hayan sido asignadas
 		if (users.size == 0 || tareas.size == 0) message.channel.send(
 			new Discord.MessageEmbed()
@@ -35,7 +36,7 @@ module.exports = {
 		);
 
 		else {
-			const resultados = raffle(users, tareas);	// Repartimos
+			const resultados = raffle2(users, tareas);	// Repartimos
 
 			const resEmbed = new Discord.MessageEmbed()
 			.setColor('#FF8000')
