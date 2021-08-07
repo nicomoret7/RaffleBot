@@ -25,6 +25,7 @@ client.on('message', message => {
 	const command = args.shift().toLowerCase();
 
 	if (command === 'ping') client.commands.get('ping').execute(message, args);
+	else if (command === 'users') client.commands.get('users').execute(message,args);
 });
 
 client.login(process.env.DISCORD_TOKEN);
