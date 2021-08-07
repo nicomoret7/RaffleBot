@@ -1,18 +1,21 @@
 module.exports = {
 	name: 'users',
 	description:"selecciona los participantes",
-	execute(message, args) {
-		if (args.length == 0) {
-			message.channel.send("No has seleccionado ningún participante");
-		} else {
-			const users = new Set();
+	execute(message, args, Discord, users) {
+		if (args.length != 0)	{
 			for (idx in args) {
 				users.add(args[idx]);
 			}
-			message.channel.send("**Participantes:**")
-			users.forEach((elem) => {
-				message.channel.send(`- ${elem}`);
-			})
-		}
-	}
+		}	
+
+		if (users.size != 0) {
+			// Embebbed response
+			const messageEmbed = new Discord.MessageEmbed()
+			.setColor('#FF8000')
+			.setTitle('Participantes')
+			.setDescription(Array.from(users).join('\n'));
+
+			message.channel.send(messageEmbed);
+		} else message.channel.send("No has seleccionado ningún participante");
+	}	
 }

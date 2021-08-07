@@ -3,6 +3,7 @@ require('dotenv').config();
 const client = new Discord.Client();
 const prefix = process.env.PREFIX;
 const fs = require('fs');
+const users = new Set();
 
 client.commands = new Discord.Collection();
 
@@ -24,8 +25,14 @@ client.on('message', message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (command === 'ping') client.commands.get('ping').execute(message, args);
-	else if (command === 'users') client.commands.get('users').execute(message,args);
+	switch(command) {
+		case 'ping':	client.commands.get('ping').execute(message, args);
+						break;
+		case 'participantes':	
+						client.commands.get('users').execute(message, args, Discord, users);
+						break;
+		default:		message.channel.send('Comando no reconocido.');
+	}
 });
 
 client.login(process.env.DISCORD_TOKEN);
