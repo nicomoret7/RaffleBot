@@ -3,6 +3,7 @@ module.exports = {
 	description:"Introduce y lista las tareas",
 	execute(message, args, Discord, tareas) {
 		if (args.length != 0)	{
+			tareas.clear();
 			for (idx in args) {
 				tareas.add(args[idx]);
 			}

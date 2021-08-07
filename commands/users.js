@@ -3,6 +3,7 @@ module.exports = {
 	description:"Inserta y lista los participantes.",
 	execute(message, args, Discord, users) {
 		if (args.length != 0)	{
+			users.clear();
 			for (idx in args) {
 				users.add(args[idx]);
 			}
