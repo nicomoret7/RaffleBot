@@ -1,0 +1,19 @@
+{
+  "name": "rufflebot",
+  "version": "1.0.0",
+  "description": "Bot para sortear tareas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicomoret7/RuffleBot.git"
+  },
+  "author": "Nico Moret",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicomoret7/RuffleBot/issues"
+  },
+  "homepage": "https://github.com/nicomoret7/RuffleBot#readme"
+}
