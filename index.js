@@ -4,9 +4,11 @@ const client = new Discord.Client();
 const prefix = process.env.PREFIX;
 const fs = require('fs');
 const users = new Set();
+const tareas = new Set();
 
+
+// Escanea e importa los comandos implementados
 client.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -15,9 +17,12 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.once('ready', () => {
+// Notifica que el bot esté online
+client.on('ready', () => {
 	console.log('Raffle Bot is online!');
 });
+
+
 
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -26,12 +31,17 @@ client.on('message', message => {
 	const command = args.shift().toLowerCase();
 
 	switch(command) {
-		case 'ping':	client.commands.get('ping').execute(message, args);
-						break;
 		case 'participantes':	
-						client.commands.get('users').execute(message, args, Discord, users);
+						client.commands.get('participantes').execute(message, args, Discord, users);
 						break;
-		default:		message.channel.send('Comando no reconocido.');
+		case 'tareas':	client.commands.get('tareas').execute(message, args, Discord, tareas);
+						break;
+		case 'raffle':	client.commands.get('raffle').execute(message, args, Discord, users, tareas);
+						break;
+		case 'rafflehelp':	
+						client.commands.get('rafflehelp').execute(message, args, Discord, client.commands);
+						break;
+		default:		message.channel.send('Comando no reconocido. Escribe !rafflehelp para ver los comandos disponibles');
 	}
 });
 

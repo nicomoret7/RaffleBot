@@ -1,6 +1,6 @@
 module.exports = {
-	name: 'users',
-	description:"selecciona los participantes",
+	name: 'participantes',
+	description:"Inserta y lista los participantes.",
 	execute(message, args, Discord, users) {
 		if (args.length != 0)	{
 			for (idx in args) {
