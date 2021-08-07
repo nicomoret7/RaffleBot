@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'rafflehelp',
+	name: 'rhelp',
 	description:"Muestra una lista con los comandos disponibles",
 	execute(message, args, Discord, commands) {
 		// Embebbed response

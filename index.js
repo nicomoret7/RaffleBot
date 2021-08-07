@@ -38,10 +38,13 @@ client.on('message', message => {
 						break;
 		case 'raffle':	client.commands.get('raffle').execute(message, args, Discord, users, tareas);
 						break;
-		case 'rafflehelp':	
-						client.commands.get('rafflehelp').execute(message, args, Discord, client.commands);
+		case 'rclear':	
+						client.commands.get('rclear').execute(message, args, Discord, users, tareas);
 						break;
-		default:		message.channel.send('Comando no reconocido. Escribe !rafflehelp para ver los comandos disponibles');
+		case 'rhelp':	
+						client.commands.get('rhelp').execute(message, args, Discord, client.commands);
+						break;
+		default:		message.channel.send('Comando no reconocido. Escribe `!rhelp` para ver los comandos disponibles');
 	}
 });
 
