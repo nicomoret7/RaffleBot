@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'raffle',
 	description:"Reparte las tareas entre los participantes aleatoriamente.",
-	execute(message, args, Discord, users, tareas) {
+	execute(client, message, args, Discord, users, tareas) {
 
 		// Función de sorteo mejorada
 		function raffle2(users, tareas) {
@@ -29,6 +29,7 @@ module.exports = {
 
 
 		// Comprueba que los participantes y las tareas hayan sido asignadas
+		console.log(`Users: ${users.size}, Tareas: ${tareas.size}`);
 		if (users.size == 0 || tareas.size == 0) message.channel.send(
 			new Discord.MessageEmbed()
 			.setColor('#FF8000')

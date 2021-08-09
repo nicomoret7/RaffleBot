@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'participantes',
 	description:"Inserta y lista los participantes.",
-	execute(message, args, Discord, users) {
+	execute(client, message, args, Discord, users) {
 		if (args.length != 0)	{
 			users.clear();
 			for (idx in args) {
